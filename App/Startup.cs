@@ -38,8 +38,8 @@ public class Startup
 	{
 		services.AddDbContext<EventAppContext>(opt =>
 			// TODO: find out, why env variables are not loading
-			//opt.UseLazyLoadingProxies().UseNpgsql(Configuration.GetValue<string>("Pgsql"))
-			opt.UseLazyLoadingProxies().UseNpgsql("Host=localhost;Port=5432;Database=eventapp;Username=postgres;Password=postgres")
+			opt.UseLazyLoadingProxies().UseNpgsql(Configuration.GetValue<string>("Pgsql"))
+		//opt.UseLazyLoadingProxies().UseNpgsql("Host=localhost;Port=5432;Database=eventapp;Username=postgres;Password=postgres")
 		);
 
 		//Add main services.

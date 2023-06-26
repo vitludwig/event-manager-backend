@@ -37,13 +37,14 @@ namespace EventApp.Migrations
                         .HasColumnType("text")
                         .HasColumnName("description");
 
+                    b.Property<string>("Description_EN")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("description_en");
+
                     b.Property<DateTime>("End")
                         .HasColumnType("timestamp without time zone")
                         .HasColumnName("end");
-
-                    b.Property<bool>("Favorite")
-                        .HasColumnType("boolean")
-                        .HasColumnName("favorit");
 
                     b.Property<string>("Image")
                         .HasColumnType("text")
@@ -54,6 +55,11 @@ namespace EventApp.Migrations
                         .HasColumnType("text")
                         .HasColumnName("name");
 
+                    b.Property<string>("Name_EN")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("name_en");
+
                     b.Property<Guid>("PlaceId")
                         .HasColumnType("uuid")
                         .HasColumnName("placeId");
@@ -62,9 +68,8 @@ namespace EventApp.Migrations
                         .HasColumnType("timestamp without time zone")
                         .HasColumnName("start");
 
-                    b.Property<string>("Type")
-                        .IsRequired()
-                        .HasColumnType("text")
+                    b.Property<int>("Type")
+                        .HasColumnType("integer")
                         .HasColumnName("type");
 
                     b.HasKey("Id");

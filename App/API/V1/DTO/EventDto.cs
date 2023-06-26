@@ -7,17 +7,19 @@ namespace EventApp.API.V1.DTO
 	{
 		public string Name { get; set; } = "";
 
+		public string Name_EN { get; set; } = "";
+
 		public string Description { get; set; } = "";
 
-		public string Type { get; set; } = "";
+		public string Description_EN { get; set; } = "";
+
+		public EEventType Type { get; set; }
 
 		public DateTime Start { get; set; }
 
 		public DateTime End { get; set; }
 
 		public string Image { get; set; } = "";
-
-		public bool Favorite { get; set; }
 
 		public Guid PlaceId { get; set; }
 

@@ -14,9 +14,17 @@ namespace EventApp.App.Dal.Entities
 		[Required]
 		public string Name { get; set; } = "";
 
+		[Column("name_en")]
+		[Required]
+		public string Name_EN { get; set; } = "";
+
 		[Column("description")]
 		[Required]
 		public string Description { get; set; } = "";
+
+		[Column("description_en")]
+		[Required]
+		public string Description_EN { get; set; } = "";
 
 		[Column("image")]
 		public string? Image { get; set; }
@@ -35,13 +43,9 @@ namespace EventApp.App.Dal.Entities
 
 		public virtual Place? Place { get; set; }
 
-		[Column("favorit")]
-		[Required]
-		public bool Favorite { get; set; }
-
 		[Column("type")]
 		[Required]
-		public string Type { get; set; } = "";
+		public EEventType Type { get; set; }
 
 	}
 }

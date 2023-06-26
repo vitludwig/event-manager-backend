@@ -5,6 +5,7 @@ using EventApp.App.Services.Place;
 using Lib.Net.Http.WebPush;
 using Lib.Net.Http.WebPush.Authentication;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -121,13 +122,16 @@ namespace EventApp.App.Services.Notification
 				var end = DateTime.Parse(changedProperties.end).ToString("dd.MM HH:mm");
 				text += $"Konec: {end}\r\n";
 			}
-
+			var data = new Dictionary<string, object>();
+			var onClick = new { Default = new { operation = "openWindow", url = "/notifications" } };
+			data.Add("onActionClick", onClick);
 			PushMessage notification = new AngularPushNotification
 			{
 				Title = title,
 				Body = text,
 				Icon = "assets/icons/icon-96x96.png",
 				Vibrate = { 200, 100, 200 },
+				Data = data,
 			}.ToPushMessage();
 
 			foreach (PushSubscription subscription in _collection.FindAll())

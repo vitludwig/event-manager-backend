@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace EventApp.Migrations
 {
     [DbContext(typeof(EventAppContext))]
-    [Migration("20230527134755_places")]
-    partial class places
+    [Migration("20230621214508_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -65,14 +65,47 @@ namespace EventApp.Migrations
                         .HasColumnType("timestamp without time zone")
                         .HasColumnName("start");
 
-                    b.Property<string>("Type")
-                        .IsRequired()
-                        .HasColumnType("text")
+                    b.Property<int>("Type")
+                        .HasColumnType("integer")
                         .HasColumnName("type");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("PlaceId");
+
                     b.ToTable("events");
+                });
+
+            modelBuilder.Entity("EventApp.App.Dal.Entities.Notification", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("id");
+
+                    b.Property<string>("ChangedProperties")
+                        .HasColumnType("text")
+                        .HasColumnName("changedProperties");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("timestamp without time zone")
+                        .HasColumnName("created");
+
+                    b.Property<Guid?>("EventId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("eventId");
+
+                    b.Property<int>("Target")
+                        .HasColumnType("integer")
+                        .HasColumnName("target");
+
+                    b.Property<int>("Type")
+                        .HasColumnType("integer")
+                        .HasColumnName("type");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("notifications");
                 });
 
             modelBuilder.Entity("EventApp.App.Dal.Entities.Place", b =>
@@ -90,6 +123,15 @@ namespace EventApp.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("places");
+                });
+
+            modelBuilder.Entity("EventApp.App.Dal.Entities.Event", b =>
+                {
+                    b.HasOne("EventApp.App.Dal.Entities.Place", "Place")
+                        .WithMany()
+                        .HasForeignKey("PlaceId");
+
+                    b.Navigation("Place");
                 });
 #pragma warning restore 612, 618
         }
