@@ -2,10 +2,6 @@ using MicroElements.Swashbuckle.FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Reflection;
 
 namespace EventApp.App.Extensions;
 
@@ -27,7 +23,7 @@ public static class VersionServicesExtension
 		});
 
 		services.AddFluentValidationRulesToSwagger();
-		services.AddSwaggerGen(c =>
+		/*services.AddSwaggerGen(c =>
 		{
 			c.EnableAnnotations(true, true);
 			c.CustomSchemaIds(type =>
@@ -50,7 +46,7 @@ public static class VersionServicesExtension
 			var projName = Assembly.GetExecutingAssembly().GetName().Name;
 			var filePath = Path.Combine(AppContext.BaseDirectory, $"{projName}.xml");
 			c.IncludeXmlComments(filePath);
-		});
+		});*/
 		//services.ConfigureOptions<ConfigureSwaggerOptions>();
 	}
 }
