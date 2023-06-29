@@ -59,3 +59,5 @@ msbuild.wrn
 /.vs/eventapp/FileContentIndex/60df8cca-d0b0-4bed-9625-0f56c4893b1a.vsidx
 /.vs/eventapp/FileContentIndex/c0f98dba-1fb7-4cd9-8aca-f865f1df85d9.vsidx
 *.vsidx
+/App/API/V1/Controllers/EventsController.cs
+/App/Startup.cs
