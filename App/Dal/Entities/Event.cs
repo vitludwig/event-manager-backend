@@ -31,11 +31,11 @@ namespace EventApp.App.Dal.Entities
 
 		[Column("start")]
 		[Required]
-		public DateTime Start { get; set; }
+		public string Start { get; set; }
 
 		[Column("end")]
 		[Required]
-		public DateTime End { get; set; }
+		public string End { get; set; }
 
 		[Column("placeId")]
 		[Required]

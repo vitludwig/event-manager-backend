@@ -15,9 +15,9 @@ namespace EventApp.API.V1.DTO
 
 		public EEventType Type { get; set; }
 
-		public DateTime Start { get; set; }
+		public string Start { get; set; }
 
-		public DateTime End { get; set; }
+		public string End { get; set; }
 
 		public string Image { get; set; } = "";
 
